@@ -8,10 +8,10 @@ import (
 )
 
 const (
-	WAIT_TIME   = (2 * time.Minute) + (30 * time.Second) // wait time to turn off tea pot
+	WAIT_TIME      = (2 * time.Minute) + (30 * time.Second) // wait time to turn off tea pot
 	SONG_PLAY_TIME = (2 * time.Minute) + (17 * time.Second) // length of alarm song
-	OPEN_SOUND  = "sounds/herewego.ogg"
-	READY_MUSIC = "sounds/artOfWar.ogg"
+	OPEN_SOUND     = "sounds/herewego.ogg"
+	READY_MUSIC    = "sounds/artOfWar.ogg"
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 		fmt.Println("Unable to initialize sdl")
 		return
 	} else {
-		fmt.Println("SDL initialized")
+		fmt.Println("SDL initialized.")
 	}
 
 	defer sdl.Quit()
@@ -28,7 +28,7 @@ func main() {
 		fmt.Println("Unable to initialize audio mixer")
 		return
 	} else {
-		fmt.Println("Audio mixer initialized")
+		fmt.Println("Audio mixer initialized.")
 	}
 
 	defer mix.Quit()
@@ -57,7 +57,7 @@ func main() {
 
 	defer readySound.Free()
 
-	fmt.Println("All audio loaded")
+	fmt.Println("All audio loaded.")
 
 	time.Sleep(3 * time.Second)
 
@@ -70,7 +70,7 @@ func main() {
 
 	select {
 	case <-readyChan:
-		fmt.Println("You can turn off the tea pot now")
+		fmt.Println("You can turn off the tea pot now.")
 	}
 
 	readySound.Play(1)
@@ -83,7 +83,7 @@ func main() {
 	}
 }
 
-func updateUserOnStatus(ready chan bool, duration time.Duration){
+func updateUserOnStatus(ready chan bool, duration time.Duration) {
 	now := time.Now()
 	fut := now.Add(duration)
 	timeSinceLast := now
